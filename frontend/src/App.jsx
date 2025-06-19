@@ -6,9 +6,10 @@ function App() {
   const [companyType, setCompanyType] = useState("");
   const [jobRole, setJobRole] = useState("");
   const [atsScore, setAtsScore] = useState(null);
-  const [shortlistStatus, setShortlistStatus] = useState(""); // ✅ NEW
+  const [shortlistStatus, setShortlistStatus] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [missingKeywords, setMissingKeywords] = useState([]);
+  const [error, setError] = useState(""); // ✅ New error state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,13 +32,26 @@ function App() {
 
       const data = await response.json();
 
-      setAtsScore(data.atsScore);
-      setShortlistStatus(data.shortlistStatus); // ✅ NEW
-      setSuggestions(data.suggestions);
-      setMissingKeywords(data.missingKeywords);
+      if (response.ok) {
+        setAtsScore(data.atsScore || 0);
+        setShortlistStatus(data.shortlistStatus || "N/A");
+        setSuggestions(data.suggestions || []);
+        setMissingKeywords(data.missingKeywords || []);
+        setError("");
+      } else {
+        setError(data.error || "Something went wrong.");
+        setAtsScore(null);
+        setShortlistStatus("");
+        setSuggestions([]);
+        setMissingKeywords([]);
+      }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong. Check backend server.");
+      setError("Server not reachable. Please try again later.");
+      setAtsScore(null);
+      setShortlistStatus("");
+      setSuggestions([]);
+      setMissingKeywords([]);
     }
   };
 
@@ -122,21 +136,31 @@ function App() {
         <div className="right-panel">
           <h2>Results Will Show Here 🔍</h2>
 
-          {atsScore !== null ? (
+          {error && <p style={{ color: "red" }}>❌ {error}</p>}
+
+          {atsScore !== null && !error ? (
             <>
               <p>→ <strong>ATS Score:</strong> {atsScore}%</p>
               <p>→ <strong>Status:</strong> {shortlistStatus}</p>
               <p>→ <strong>Suggestions:</strong></p>
               <ul>
-                {suggestions.map((item, index) => (
-                  <li key={index}>💡 {item}</li>
-                ))}
+                {suggestions?.length > 0 ? (
+                  suggestions.map((item, index) => (
+                    <li key={index}>💡 {item}</li>
+                  ))
+                ) : (
+                  <li>No suggestions available.</li>
+                )}
               </ul>
               <p>→ <strong>Missing Keywords:</strong></p>
               <ul>
-                {missingKeywords.map((key, index) => (
-                  <li key={index}>❌ {key}</li>
-                ))}
+                {missingKeywords?.length > 0 ? (
+                  missingKeywords.map((key, index) => (
+                    <li key={index}>❌ {key}</li>
+                  ))
+                ) : (
+                  <li>No missing keywords found.</li>
+                )}
               </ul>
             </>
           ) : (
