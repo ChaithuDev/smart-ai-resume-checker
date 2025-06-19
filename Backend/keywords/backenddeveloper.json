@@ -1,0 +1,12 @@
+[
+  "nodejs",
+  "express",
+  "mongodb",
+  "mysql",
+  "api",
+  "rest",
+  "authentication",
+  "jwt",
+  "mongoose",
+  "postgresql"
+]

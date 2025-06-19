@@ -1,0 +1,110 @@
+.App {
+  min-height: 100vh;
+  width: 96%;
+  background: linear-gradient(to right, #000000, #0f4c81);
+  color: white;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  gap: 2rem;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.divider {
+  width: 2px;
+  background: linear-gradient(to bottom, #ffffff44, #ffffff88);
+  border-radius: 5px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+/* File Upload */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 2px dashed #ffffff;
+  border-radius: 10px;
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Labels and Inputs */
+form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[list] {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Button */
+button {
+  padding: 1rem;
+  margin-top: 1.5rem;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center; /* Button center */
+  width: 60%; /* Optional: adjust width */
+}
+
+button:hover {
+  background-color: #0f78d0;
+}
+
+/* Right Panel Text */
+.right-panel p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-left: 1rem;
+}
