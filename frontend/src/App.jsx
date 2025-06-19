@@ -24,7 +24,7 @@ function App() {
     formData.append("jobRole", jobRole);
 
     try {
-      const response = await fetch("https://smart-ai-resume-checker-backend.onrender.com", {
+      const response = await fetch("https://smart-ai-resume-checker-backend.onrender.com/analyze", {
         method: "POST",
         body: formData,
       });
