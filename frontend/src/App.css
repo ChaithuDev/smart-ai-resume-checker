@@ -1,6 +1,19 @@
+/* 🔁 Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 🌐 App Container */
 .App {
   min-height: 100vh;
-  width: 96%;
+  width: 100%;
   background: linear-gradient(to right, #000000, #0f4c81);
   color: white;
   padding: 2rem;
@@ -8,8 +21,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
+/* 🧱 Flex Container */
 .container {
   display: flex;
   width: 100%;
@@ -17,6 +32,7 @@
   gap: 2rem;
 }
 
+/* 🎯 Panels */
 .left-panel,
 .right-panel {
   flex: 1;
@@ -30,19 +46,21 @@
   justify-content: center;
 }
 
+/* Divider */
 .divider {
   width: 2px;
   background: linear-gradient(to bottom, #ffffff44, #ffffff88);
   border-radius: 5px;
 }
 
+/* Headings */
 h1, h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: white;
 }
 
-/* File Upload */
+/* 📤 File Upload */
 input[type="file"] {
   display: none;
 }
@@ -64,7 +82,7 @@ input[type="file"] {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Labels and Inputs */
+/* 📝 Labels & Inputs */
 form label {
   display: flex;
   flex-direction: column;
@@ -81,9 +99,10 @@ input[list] {
   margin-top: 0.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
+  width: 100%;
 }
 
-/* Button */
+/* 🚀 Button */
 button {
   padding: 1rem;
   margin-top: 1.5rem;
@@ -94,32 +113,32 @@ button {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: center; /* Button center */
-  width: 60%; /* Optional: adjust width */
+  align-self: center;
+  width: 60%;
 }
 
 button:hover {
   background-color: #0f78d0;
 }
 
-/* Right Panel Text */
+/* 📊 Output Text */
 .right-panel p {
   font-size: 1rem;
   line-height: 1.8;
   margin-left: 1rem;
 }
-/* 📱 Mobile Layout Fix */
+
+/* 📱 Mobile Responsive Fix */
 @media (max-width: 768px) {
   .App {
-    padding: 1rem;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    padding: 1rem;
   }
 
   .container {
     flex-direction: column;
-    width: 100%;
     gap: 1.5rem;
   }
 
@@ -128,7 +147,6 @@ button:hover {
     width: 100%;
     padding: 1.2rem;
     border-radius: 15px;
-    backdrop-filter: blur(4px);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   }
 
@@ -138,22 +156,21 @@ button:hover {
 
   h1, h2 {
     font-size: 1.3rem;
-    text-align: center;
     margin-bottom: 1rem;
-  }
-
-  input[type="text"],
-  input[list] {
-    font-size: 0.95rem;
-    padding: 0.6rem;
-    border-radius: 8px;
-    width: 100%;
+    text-align: center;
   }
 
   .custom-file-upload {
     width: 100%;
     font-size: 0.95rem;
     padding: 0.7rem;
+  }
+
+  input[type="text"],
+  input[list] {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+    width: 100%;
   }
 
   button {
@@ -165,8 +182,8 @@ button:hover {
 
   .right-panel p {
     font-size: 0.95rem;
-    line-height: 1.6;
     margin-left: 0;
+    line-height: 1.6;
   }
 
   ul {
