@@ -108,3 +108,42 @@ button:hover {
   line-height: 1.8;
   margin-left: 1rem;
 }
+/* 🔁 Mobile View Only */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[list] {
+    width: 100%;
+  }
+
+  .custom-file-upload {
+    width: 100%;
+  }
+
+  h1, h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .right-panel p {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+}
